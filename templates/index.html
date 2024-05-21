@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation Prediction</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Customer Segmentation Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="row">
+                {% for i in range(5) %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sample {{i+1}}</h5>
+                            <div class="form-group">
+                                <label for="sample_{{i+1}}_annual_income">Annual Income</label>
+                                <input type="number" class="form-control" name="sample_{{i+1}}_annual_income" min="0" max="200" step="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sample_{{i+1}}_spending_score">Spending Score</label>
+                                <input type="number" class="form-control" name="sample_{{i+1}}_spending_score" min="0" max="100" step="1" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
